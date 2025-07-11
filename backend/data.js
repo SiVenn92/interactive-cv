@@ -1,7 +1,7 @@
 // backend/data.js
 const educationHistory = [
-{ id: 1, period: '2022 - Sekarang', institution: 'Universitas Gadjah Mada', major: 'S1 - Teknik Informatika' },
-{ id: 2, period: '2019 - 2022', institution: 'SMA Negeri 1 Teladan Yogyakarta', major: 'MIPA' }
+{ id: 1, period: '2022 - Sekarang', institution: 'Universitas Amikom Yogyakarta', major: 'S1 - Teknik Informatika' },
+{ id: 2, period: '2019 - 2022', institution: 'SMK WONGSOREJO GOMBONG', major: 'Teknik Permesinan' }
 ];
 const skills = [
 { name: 'Vue.js', level: 'Mahir' }, { name: 'JavaScript', level:
@@ -16,7 +16,7 @@ level: 'Mahir' },
 ];
 const projects = [
 { title: 'Website Toko Online', image:
-'https://via.placeholder.com/500x300?text=Proyek+1', description:
+'https://semigataweb.com/jasa-pembuatan-website-toko-online/', description:
 'Platform e-commerce dengan fitur keranjang belanja.', tech: ['Vue.js',
 'Express.js', 'PostgreSQL'], link: '#' },
 { title: 'Aplikasi Manajemen Tugas', image:
