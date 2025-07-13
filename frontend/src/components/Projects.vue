@@ -1,39 +1,40 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import TheSectionTitle from './sectionTitle.vue'; // Menggunakan nama file yang sudah diperbaiki
+import SectionTitle from './sectionTitle.vue';
+import { ref } from 'vue';
 
-const projects = ref([]);
-
-onMounted(async () => {
-  try {
-    const response = await axios.get('http://localhost:3000/api/projects');
-    projects.value = response.data;
-  } catch (error) {
-    console.error('Gagal mengambil data proyek:', error);
+// Ganti dengan data proyek Anda, bisa juga dari API
+const projects = ref([
+  {
+    title: 'Website Toko Online',
+    description: 'Aplikasi e-commerce dengan fitur keranjang belanja.',
+    link: '#',
+    tags: ['Vue.js', 'Express.js', 'PostgreSQL']
+  },
+  {
+    title: 'Aplikasi Manajemen Tugas',
+    description: 'Aplikasi untuk melacak progres tugas harian.',
+    link: '#',
+    tags: ['React', 'Firebase']
   }
-});
+]);
 </script>
 
 <template>
-  <section id="proyek" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <TheSectionTitle title="Proyek Unggulan" />
-      <div class="grid md:grid-cols-2 gap-12">
-        <div v-for="project in projects" :key="project.title" class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-          <img :src="project.image" alt="Gambar Proyek" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ project.title }}</h3>
-            <p class="text-gray-600 mb-4">{{ project.description }}</p>
-            <div class="mb-4">
-              <span v-for="t in project.tech" :key="t" class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full">{{ t }}</span>
-            </div>
-            <a :href="project.link" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold hover:underline">
-              Lihat Detail &rarr;
-            </a>
-          </div>
+  <div class="container mx-auto px-6">
+    <SectionTitle title="Proyek Unggulan" />
+    <div class="mt-8 grid md:grid-cols-2 gap-12">
+      <div v-for="project in projects" :key="project.title" class="bg-white p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+        <h3 class="text-2xl font-bold text-gray-800">{{ project.title }}</h3>
+        <p class="mt-4 text-gray-600">{{ project.description }}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span v-for="tag in project.tags" :key="tag" class="text-sm bg-indigo-100 text-indigo-800 py-1 px-3 rounded-full">
+            {{ tag }}
+          </span>
         </div>
+        <a :href="project.link" class="inline-block mt-6 font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-300">
+          Lihat Detail →
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 </template>
