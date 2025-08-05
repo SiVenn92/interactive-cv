@@ -1,9 +1,9 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-// Import komponen view untuk halaman detail
 import SkillDetailView from '../views/SkillDetailView.vue';
 import ProjectDetailView from '../views/ProjectDetailView.vue';
+import CertificateView from '../views/CertificateView.vue'; // 1. IMPORT HALAMAN BARU
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,19 +13,25 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
-    // Route untuk detail keahlian
+    {
+      path: '/sertifikat', // 2. TAMBAHKAN RUTE BARU DI SINI
+      name: 'sertifikat',
+      component: CertificateView
+    },
+    // Route untuk detail keahlian (tetap ada)
     {
       path: '/skill/:slug',
       name: 'skill-detail',
       component: SkillDetailView
     },
-    // Route untuk detail proyek
+    // Route untuk detail proyek (tetap ada)
     {
       path: '/proyek/:slug',
       name: 'project-detail',
       component: ProjectDetailView
     }
   ],
+  // scrollBehavior Anda tidak perlu diubah, biarkan seperti ini
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {

@@ -1,3 +1,5 @@
+// File: src/components/Skills.vue
+
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
@@ -7,7 +9,6 @@ const skills = ref([]);
 
 onMounted(async () => {
   try {
-    // Pengambilan data dari API sudah benar
     const response = await axios.get('http://localhost:3000/api/skills');
     skills.value = response.data;
   } catch (error) {
@@ -33,6 +34,16 @@ onMounted(async () => {
         </router-link>
 
       </div>
+
+      <div class="text-center mt-12">
+        <RouterLink 
+          to="/sertifikat" 
+          class="text-teal-600 font-semibold hover:text-teal-800 transition-colors duration-300 text-lg"
+        >
+          Lihat Sertifikat Lengkap &rarr;
+        </RouterLink>
+      </div>
+
     </div>
   </section>
-  </template>
+</template>
